@@ -1,0 +1,105 @@
+/* Custom styles for the portfolio */
+
+/* About Section Enhancements */
+.about-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.about-section .badge {
+    background-color: #8826BB !important;
+    transition: all 0.3s ease;
+}
+
+.about-section .badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(136, 38, 187, 0.3);
+}
+
+.about-section .d-flex.align-items-center {
+    transition: all 0.3s ease;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.about-section .d-flex.align-items-center:hover {
+    background-color: rgba(136, 38, 187, 0.1);
+    transform: translateX(5px);
+}
+
+.about-section img {
+    transition: all 0.3s ease;
+}
+
+.about-section img:hover {
+    transform: scale(1.02);
+}
+
+/* Hero Section Enhancements */
+.hero {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Button Enhancements */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar Enhancements */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    color: #8826BB !important;
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #8826BB !important;
+}
+
+/* Projects Section */
+.project-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.project-card .card-img-top {
+    height: 190px;
+    object-fit: cover;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-section .d-flex.align-items-center:hover {
+        transform: none;
+    }
+    
+    .about-section img:hover {
+        transform: none;
+    }
+
+    .project-card .card-img-top {
+        height: 160px;
+    }
+}
+
+
