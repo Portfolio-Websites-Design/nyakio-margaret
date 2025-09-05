@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyakio Margaret | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --white: hsl(0, 0%, 100%);
+            --black: hsl(240, 15%, 9%);
+            --paragraph: hsl(0, 0%, 83%);
+            --line: hsl(240, 9%, 17%);
+            --primary: hsl(266, 92%, 58%);
+            --card-bg: hsla(240, 15%, 9%, 1);
+        }
+
+        body {
+            font-family: 'Iceberg', sans-serif;
+            background-color: var(--card-bg);
+            color: var(--white);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--line);
+            padding: 1rem 0;
+            box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: var(--paragraph);
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background-color: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+        }
+
+        .dropdown-item {
+            color: var(--white);
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary);
+            color: var(--black);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            background-image: radial-gradient(at 88% 40%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 49% 30%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 14% 26%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+                              radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+                              radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+            padding: 4rem 0;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background-image: linear-gradient(0deg, var(--white) -50%, hsl(0, 0%, 40%) 100%);
+            border-radius: 1rem;
+            z-index: -10;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: left;
+            width: 200%;
+            height: 10rem;
+            background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsl(277, 95%, 60%) 40%, hsl(277, 95%, 60%) 60%, hsla(0, 0%, 40%, 0) 100%);
+            animation: rotate 8s linear infinite;
+            z-index: -9;
+        }
+
+        .hero h1, .hero p, .hero .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--paragraph);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            animation: fadeInRight 1.4s ease-out;
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(0deg, rgba(94, 58, 238, 1) 0%, rgba(197, 107, 240, 1) 100%);
+            border-color: transparent;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            color: var(--white);
+            box-shadow: inset 0 -2px 25px -4px var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-image: linear-gradient(0deg, rgba(94, 58, 238, 0.8) 0%, rgba(197, 107, 240, 0.8) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--paragraph);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background-image: linear-gradient(0deg, rgba(94, 58, 238, 1) 0%, rgba(197, 107, 240, 1) 100%);
+            border-color: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .project-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+            width: 19rem;
+            background-color: var(--card-bg);
+            background-image: radial-gradient(at 88% 40%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 49% 30%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 14% 26%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+                              radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+                              radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+            border-radius: 1rem;
+            box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card .card__border {
+            overflow: hidden;
+            pointer-events: none;
+            position: absolute;
+            z-index: -10;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background-image: linear-gradient(0deg, var(--white) -50%, hsl(0, 0%, 40%) 100%);
+            border-radius: 1rem;
+        }
+
+        .project-card .card__border::before {
+            content: '';
+            pointer-events: none;
+            position: fixed;
+            z-index: 200;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: left;
+            width: 200%;
+            height: 10rem;
+            background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsl(277, 95%, 60%) 40%, hsl(277, 95%, 60%) 60%, hsla(0, 0%, 40%, 0) 100%);
+            animation: rotate 8s linear infinite;
+        }
+
+        .project-card img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card .card-title {
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .project-card .card-text {
+            font-size: 0.5rem;
+            color: var(--paragraph);
+            width: 65%;
+        }
+
+        .project-card .line {
+            width: 100%;
+            height: 0.1rem;
+            background-color: var(--line);
+            border: none;
+        }
+
+        .project-card .card__list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .project-card .card__list_item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-card .check {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1rem;
+            height: 1rem;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        .project-card .check_svg {
+            width: 0.75rem;
+            height: 0.75rem;
+            fill: var(--black);
+        }
+
+        .project-card .list_text {
+            font-size: 0.75rem;
+            color: var(--white);
+        }
+
+        .project-card .button {
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 100%;
+            background-image: linear-gradient(0deg, rgba(94, 58, 238, 1) 0%, rgba(197, 107, 240, 1) 100%);
+            font-size: 0.75rem;
+            color: var(--white);
+            border: 0;
+            border-radius: 9999px;
+            box-shadow: inset 0 -2px 25px -4px var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .project-card .button:hover {
+            background-image: linear-gradient(0deg, rgba(94, 58, 238, 0.8) 0%, rgba(197, 107, 240, 0.8) 100%);
+            transform: translateY(-3px);
+        }
+
+        .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            background-color: var(--primary);
+            color: var(--black);
+        }
+
+        .about-section {
+            background-color: var(--card-bg);
+            background-image: radial-gradient(at 88% 40%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 49% 30%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 14% 26%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 0% 64%, hsla(263, 93%, 56%, 1) 0px, transparent 85%),
+                              radial-gradient(at 41% 94%, hsla(284, 100%, 84%, 1) 0px, transparent 85%),
+                              radial-gradient(at 100% 99%, hsla(306, 100%, 57%, 1) 0px, transparent 85%);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background-image: linear-gradient(0deg, var(--white) -50%, hsl(0, 0%, 40%) 100%);
+            border-radius: 1rem;
+            z-index: -10;
+        }
+
+        .about-section::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: left;
+            width: 200%;
+            height: 10rem;
+            background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, hsl(277, 95%, 60%) 40%, hsl(277, 95%, 60%) 60%, hsla(0, 0%, 40%, 0) 100%);
+            animation: rotate 8s linear infinite;
+            z-index: -9;
+        }
+
+        .about-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .about-section .lead {
+            font-size: 1.2rem;
+            color: var(--paragraph);
+            max-width: 700px;
+        }
+
+        .about-section img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .about-section img:hover {
+            transform: scale(1.02);
+        }
+
+        .skill-icon {
+            font-size: 1.75rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-icon:hover {
+            transform: scale(1.2);
+        }
+
+        .footer {
+            background-color: var(--card-bg);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--line);
+            box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset;
+        }
+
+        .footer p {
+            color: var(--paragraph);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--white);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .project-card img {
+                height: 180px;
+            }
+
+            .about-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .project-card img {
+                height: 150px;
+            }
+
+            .about-section img {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-light" href="#">Nyakio Margaret</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto gap-3 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Socials
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-github me-2"></i>GitHub</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-discord me-2"></i>Discord</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-outline-secondary ms-3"><i class="fab fa-github me-2"></i>GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container-fluid hero">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-lg-7 p-4">
+                    <h1 class="display-4 fw-bold">Building Scalable & Modern Web Solutions</h1>
+                    <p class="lead">I’m a developer who believes in simplicity, performance, and user-first design. Every project I build is crafted with care and attention to detail. Passionate about technology, driven by curiosity. I write code that empowers people and businesses.</p>
+                    <div class="d-flex gap-3">
+                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-download me-2"></i>Resume</button>
+                        <a href="mailto:margaretsam420@gmail.com" class="btn btn-outline-secondary btn-lg"><i class="fas fa-calendar-alt me-2"></i>Appointment</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img class="img-fluid" src="./assets/images/hero-1.svg" alt="Hero Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container-fluid py-5 about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="./assets/images/hero-2.svg" alt="About Margaret" class="img-fluid rounded-3">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">About Me</h2>
+                    <p class="lead mb-4">I am a passionate IT graduate with a strong foundation in software engineering and web development. My academic journey and hands-on projects including the Internet Safety Tips System and SolaSmart reflect my ability to design and implement innovative, user-centered solutions. I enjoy turning ideas into functional systems that not only solve problems but also create meaningful impact.</p>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-laptop-code skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Software Engineering</h5>
+                                    <p class="text-muted mb-0">Robust & scalable solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-tablet-alt skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Responsive Web Design</h5>
+                                    <p class="text-muted mb-0">Mobile-first approach</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-tachometer-alt skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Performance Optimization</h5>
+                                    <p class="text-muted mb-0">Fast & efficient solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user-check skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">User Experience Design</h5>
+                                    <p class="text-muted mb-0">Intuitive & impactful interfaces</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="mb-3">Additional Skills & Expertise:</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge">Networking (CCNA)</span>
+                            <span class="badge">Java OOP</span>
+                            <span class="badge">PHP & MySQL</span>
+                            <span class="badge">IT Support</span>
+                            <span class="badge">System Design</span>
+                        </div>
+                    </div>
+                    <a href="#projects" class="btn btn-primary btn-lg"><i class="fas fa-eye me-2"></i>View My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold" style="color: var(--white);">Projects</h2>
+            <p class="text-muted mb-0">A selection of my recent work.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="project-card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">Internet Safety Tips System</span>
+                        <p class="card_paragraph">Multi-user digital learning platform for online safety awareness.</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Interactive Modules</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Gamified Quizzes</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Role Dashboards</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">PHP & MySQL</span>
+                        </li>
+                    </ul>
+                    <a href="https://safety.gt.tc/" target="_blank" class="button">Live Demo</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="project-card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">SolaSmart</span>
+                        <p class="card_paragraph">Smart solar management system for energy optimization.</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Performance Monitoring</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Energy Storage</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Real-time Insights</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">PHP, MySQL, JS</span>
+                        </li>
+                    </ul>
+                    <button class="button" disabled>Demo Unavailable</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="project-card">
+                    <div class="card__border"></div>
+                    <div class="card_title__container">
+                        <span class="card_title">CCNA Routing & Switching Labs</span>
+                        <p class="card_paragraph">Hands-on networking labs following Cisco's CCNA curriculum.</p>
+                    </div>
+                    <hr class="line" />
+                    <ul class="card__list">
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Router & Switch Config</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">DHCP, IPv6, VLANs</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">HSRP, Routing Protocols</span>
+                        </li>
+                        <li class="card__list_item">
+                            <span class="check">
+                                <svg class="check_svg" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="list_text">Cisco IOS, CCNA</span>
+                        </li>
+                    </ul>
+                    <button class="button" disabled>No Demo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Nyakio Margaret. All rights reserved. | <a href="mailto:margaretsam420@gmail.com">Email Me</a> | Follow me on <a href="#">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

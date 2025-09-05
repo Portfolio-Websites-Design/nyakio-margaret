@@ -3,207 +3,611 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nyakio Margaret | Portfolio website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nyakio Margaret | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Iceberg&display=swap" rel="stylesheet" />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <style>
+        :root {
+            --white: hsl(0, 0%, 100%);
+            --black: hsl(240, 15%, 9%);
+            --paragraph: hsl(0, 0%, 83%);
+            --line: hsl(240, 9%, 17%);
+            --primary: hsl(189, 92%, 58%);
+            --card-bg: hsla(240, 15%, 9%, 1);
+        }
+
+        
+
+        body {
+            font-family: 'Iceberg', sans-serif;
+            background-color: var(--card-bg);
+            color: var(--white);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--line);
+            padding: 1rem 0;
+            /* box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset; */
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: var(--paragraph);
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-menu {
+            background-color: var(--card-bg);
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            /* box-shadow: 0px -16px 24px 0px rgba(255, 255, 255, 0.25) inset; */
+        }
+
+        .dropdown-item {
+            color: var(--white);
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary);
+            color: var(--black);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            background-image: radial-gradient(at 88% 40%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 49% 30%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 14% 26%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
+                              radial-gradient(at 41% 94%, hsl(296, 97%, 36%) 0px, transparent 85%),
+                              radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
+            padding: 4rem 0;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background-image: linear-gradient(0deg, var(--white) -50%, hsl(0, 0%, 40%) 100%);
+            border-radius: 1rem;
+            z-index: -10;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: left;
+            width: 200%;
+            height: 10rem;
+            background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, var(--primary) 40%, var(--primary) 60%, hsla(0, 0%, 40%, 0) 100%);
+            animation: rotate 8s linear infinite;
+            z-index: -9;
+        }
+
+        .hero h1, .hero p, .hero .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--paragraph);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            animation: fadeInRight 1.4s ease-out;
+        }
+
+        .btn-primary {
+            background-color: hsl(189, 99%, 26%);
+            /* border-color: var(--primary); */
+            padding: 0.75rem 2rem;
+
+            font-weight: 500;
+            border-radius: 9999px;
+            color: var(--white);
+            /* box-shadow: inset 0 -2px 25px -4px var(--white); */
+            transition: all 0.3s ease;
+            border:none;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #017084;
+            border-color: hsl(189, 99%, 26%);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--paragraph);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
 
 
-    <!-- font awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ 
+/*  */
+
+        .about-section {
+            background-color: var(--card-bg);
+            background-image: radial-gradient(at 88% 40%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 49% 30%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 14% 26%, var(--card-bg) 0px, transparent 85%),
+                              radial-gradient(at 0% 64%, hsl(189, 99%, 26%) 0px, transparent 85%),
+                              radial-gradient(at 41% 94%, hsl(296, 97%, 36%) 0px, transparent 85%),
+                              radial-gradient(at 100% 99%, hsl(188, 94%, 13%) 0px, transparent 85%);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            background-image: linear-gradient(0deg, var(--white) -50%, hsl(0, 0%, 40%) 100%);
+            border-radius: 1rem;
+            z-index: -10;
+        }
+
+        .about-section::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            transform-origin: left;
+            width: 200%;
+            height: 10rem;
+            background-image: linear-gradient(0deg, hsla(0, 0%, 100%, 0) 0%, var(--primary) 40%, var(--primary) 60%, hsla(0, 0%, 40%, 0) 100%);
+            animation: rotate 8s linear infinite;
+            z-index: -9;
+        }
+
+        .about-section h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .about-section .lead {
+            font-size: 1.2rem;
+            color: var(--paragraph);
+            max-width: 700px;
+        }
+
+        .about-section img {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .about-section img:hover {
+            transform: scale(1.02);
+        }
+
+        .skill-icon {
+            font-size: 1.75rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-icon:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .project-card img {
+                height: 180px;
+            }
+
+            .about-section h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .project-card img {
+                height: 150px;
+            }
+
+            .about-section img {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary py-3 ">
-  <div class="container">
-    <a class="navbar-brand  fw-bold" href="#">Margaret</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav d-flex align-items-center justify-content-center container gap-5 ">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-                 <li class="nav-item">
-           <a class="nav-link" href="#about">About</a>
-         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#projects">Projects</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Socials
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">LinkedIN</a></li>
-            <li><a class="dropdown-item" href="#">Github</a></li>
-            <li><a class="dropdown-item" href="#">Discord</a></li>
-          </ul>
-        </li>
-      </ul>
-        <div class="me-auto">
-            <div class="btn btn-outline-secondary d-flex align-items-center justify-content-center"><i class="fab fa-github me-2"></i> Github</div>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-light" href="#">Nyakio Margaret</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto gap-3 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Socials
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-github me-2"></i>GitHub</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fab fa-discord me-2"></i>Discord</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-outline-secondary ms-3"><i class="fab fa-github me-2"></i>GitHub</a>
+            </div>
         </div>
-    </div>
-  </div>
-</nav>
+    </nav>
 
-
-<section class="container-fluid hero" style="min-height: 85vh; ">
-
-   <div class="row p-4 pb-0 pe-lg-0 pt-lg-5  container d-flex align-items-center justify-content-center">
-      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1">Building Scalable & Modern Web Solutions</h1>
-        <p class="lead">I’m a developer who believes in simplicity, performance, and user-first design. Every project I build is crafted with care and attention to detail. Passionate about technology, driven by curiosity. I write code that empowers people and businesses.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <button type="button" class="btn  btn-lg px-4 me-md-2 fw-bold" style="background-color: #8826BB; color: white;" disabled> <i class="fas fa-download me-2"></i>  Resume</button>
-          <a href="mailto:margaretsam420@gmail.com?subject=Portfolio%20Inquiry%20-%20Appointment%20Request&body=Hi%20Margaret,%0D%0A%0D%0AI%20would%20like%20to%20schedule%20an%20appointment%20to%20discuss%20potential%20opportunities.%0D%0A%0D%0APlease%20let%20me%20know%20your%20availability.%0D%0A%0D%0ABest%20regards," class="btn btn-outline-secondary btn-lg px-4" style="text-decoration: none; display: inline-block;"> <i class="fas fa-calendar-alt me-2"></i> Appointment</a>
+    <section class="container-fluid hero">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-lg-7 p-4">
+                    <h1 class="display-4 fw-bold">Hello, <br> I am Nyakio Margaret</h1>
+                    <p class="lead">I’m a developer who believes in simplicity, performance, and user-first design. Every project I build is crafted with care and attention to detail. Passionate about technology, driven by curiosity. I write code that empowers people and businesses.</p>
+                    <div class="d-flex gap-3">
+                        <button type="button" class="btn btn-primary btn-lg"><i class="fas fa-download me-2"></i>Resume</button>
+                        <a href="mailto:margaretsam420@gmail.com" class="btn btn-outline-secondary btn-lg"><i class="fas fa-calendar-alt me-2"></i>Appointment</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img class="img-fluid" src="./assets/images/tech.jpg" style="clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);" alt="Hero Image">
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-4  p-0 ">
-          <img class="rounded-lg-3" src="./assets/images/hero-1.svg" alt="" width="720">
-      </div>
-  </div>
-</section>
+    </section>
 
-<!-- Projects Section -->
+
+
+
+  <section id="about" class="container-fluid py-5 about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="./assets/images/techy.jpg" alt="About Margaret" style="clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%); box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);" class="img-fluid rounded-3">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="display-5 fw-bold mb-4">Who am I?</h2>
+                    <p class="lead mb-4">I am a passionate IT graduate with a strong foundation in software engineering and web development. My academic journey and hands-on projects including the Internet Safety Tips System and SolaSmart reflect my ability to design and implement innovative, user-centered solutions. I enjoy turning ideas into functional systems that not only solve problems but also create meaningful impact.</p>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-laptop-code skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Software Engineering</h5>
+                                    <!-- <p class="text-muted mb-0" >Robust & scalable solutions</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-tablet-alt skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Responsive Web Design</h5>
+                                    <!-- <p class="text-muted mb-0">Mobile-first approach</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-tachometer-alt skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Performance Optimization</h5>
+                                    <!-- <p class="text-muted mb-0">Fast & efficient solutions</p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user-check skill-icon me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">User Experience Design</h5>
+                                    <!-- <p class="text-muted mb-0">Intuitive & impactful interfaces</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="mb-3">Additional Skills & Expertise:</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge rounded-pill border border-light text-light d-flex align-items-center gap-2">
+                                <i class="fas fa-network-wired"></i> Networking
+                            </span>
+                            <span class="badge rounded-pill border border-light text-light d-flex align-items-center gap-2">
+                                <i class="fab fa-java"></i> Java OOP
+                            </span>
+                            <span class="badge rounded-pill border border-light text-light d-flex align-items-center gap-2">
+                                <i class="fab fa-php"></i> PHP &amp; MySQL
+                            </span>
+                            <span class="badge rounded-pill border border-light text-light d-flex align-items-center gap-2">
+                                <i class="fas fa-headset"></i> IT Support
+                            </span>
+                            <span class="badge rounded-pill border border-light text-light d-flex align-items-center gap-2">
+                                <i class="fas fa-project-diagram"></i> System Design
+                            </span>
+                        </div>
+                    </div>
+                    <a href="#projects" class="btn btn-primary btn-lg"><i class="fas fa-eye me-2"></i>View My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
 <section id="projects" class="container py-5">
   <div class="text-center mb-5">
-    <h2 class="display-6 fw-bold" style="color: #8826BB;">Projects</h2>
-    <p class="text-muted mb-0">A selection of my recent work.</p>
+    <h2 class="display-6 fw-bold text-white">Projects</h2>
+    <p class="text-light mb-0">A selection of my recent work.</p>
   </div>
 
   <div class="row g-4">
+    <!-- Card 1 -->
     <div class="col-12 col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm project-card">
-        <img src="./assets/images/hero-2.svg" class="card-img-top" alt="Internet Safety Tips System">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">Internet Safety Tips System</h5>
-          <p class="card-text flex-grow-1">A multi-user digital learning platform promoting online safety awareness among children, teenagers, parents, and educators. Features interactive learning modules, gamified quizzes, and role-specific dashboards.</p>
-          <div class="d-flex gap-2 flex-wrap">
-            <span class="badge bg-secondary">PHP</span>
-            <span class="badge bg-secondary">MySQL</span>
-            <span class="badge bg-secondary">HTML</span>
-            <span class="badge bg-secondary">CSS</span>
-          </div>
+      <div class="card h-100 shadow-lg border-0 text-white bg-dark rounded-4">
+        <img src="./assets/images/lock.jpg" class="card-img-top rounded-top-4" alt="Internet Safety Tips System">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold">
+            <i class="fas fa-shield-alt me-2"></i>Internet Safety Tips System
+          </h5>
+          <p class="card-text small text-muted">Multi-user digital learning platform for online safety awareness.</p>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><i class="fas fa-chalkboard-teacher text-primary me-2"></i>Interactive Modules</li>
+            <li class="mb-2"><i class="fas fa-gamepad text-primary me-2"></i>Gamified Quizzes</li>
+            <li class="mb-2"><i class="fas fa-user-cog text-primary me-2"></i>Role Dashboards</li>
+            <li><i class="fab fa-php text-primary me-2"></i>PHP & MySQL</li>
+          </ul>
         </div>
-        <div class="card-footer bg-white border-0 d-flex gap-2">
-          <a href="https://safety.gt.tc/" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fas fa-external-link-alt me-1"></i> Live</a>
+        <div class="card-footer bg-transparent border-0">
+          <a href="https://safety.gt.tc/" target="_blank" class="btn btn-gradient w-100">
+            <i class="fas fa-external-link-alt me-1"></i>View Demo
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- Card 2 -->
     <div class="col-12 col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm project-card">
-        <img src="./assets/images/2024-Nilu-27-Concept-002-2160.jpg" class="card-img-top" alt="SolaSmart Solar Management System">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">SolaSmart</h5>
-          <p class="card-text flex-grow-1">A smart solar management system that monitors solar panel performance, energy storage, and consumption patterns. Provides real-time insights for energy optimization and sustainability.</p>
-          <div class="d-flex gap-2 flex-wrap">
-            <span class="badge bg-secondary">PHP</span>
-            <span class="badge bg-secondary">MySQL</span>
-            <span class="badge bg-secondary">JavaScript</span>
-          </div>
+      <div class="card h-100 shadow-lg border-0 text-white bg-dark rounded-4">
+        <img src="./assets/images/solar.jpg" class="card-img-top rounded-top-4" alt="SolaSmart">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold">
+            <i class="fas fa-solar-panel me-2"></i>SolaSmart
+          </h5>
+          <p class="card-text small text-muted">Smart solar management system for energy optimization.</p>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><i class="fas fa-tachometer-alt text-primary me-2"></i>Performance Monitoring</li>
+            <li class="mb-2"><i class="fas fa-battery-full text-primary me-2"></i>Energy Storage</li>
+            <li class="mb-2"><i class="fas fa-chart-line text-primary me-2"></i>Real-time Insights</li>
+            <li><i class="fab fa-php text-primary me-2"></i>PHP, MySQL, JS</li>
+          </ul>
         </div>
-        <div class="card-footer bg-white border-0 d-flex gap-2">
+        <div class="card-footer bg-transparent border-0">
+            <a href="https://safety.gt.tc/" target="_blank" class="btn btn-gradient w-100">
+            <i class="fas fa-external-link-alt me-1"></i>View Demo
+             </a>
         </div>
       </div>
     </div>
 
+    <!-- Card 3 -->
     <div class="col-12 col-md-6 col-lg-4">
-      <div class="card h-100 shadow-sm project-card">
-        <img src="./assets/images/hero-1.svg" class="card-img-top" alt="CCNA Routing & Switching Labs">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">CCNA Routing & Switching Labs</h5>
-          <p class="card-text flex-grow-1">Extensive hands-on networking labs following Cisco's CCNA curriculum. Configured routers and switches for DHCP, IPv6, VLANs, HSRP, and routing protocols. Gained practical experience in network design and troubleshooting.</p>
-          <div class="d-flex gap-2 flex-wrap">
-            <span class="badge bg-secondary">Cisco IOS</span>
-            <span class="badge bg-secondary">Networking</span>
-            <span class="badge bg-secondary">CCNA</span>
-          </div>
+      <div class="card h-100 shadow-lg border-0 text-white bg-dark rounded-4">
+        <img src="./assets/images/net.jpg" class="card-img-top rounded-top-4" alt="CCNA Labs">
+        <div class="card-body">
+          <h5 class="card-title fw-semibold">
+            <i class="fas fa-network-wired me-2"></i>CCNA Routing & Switching Labs
+          </h5>
+          <p class="card-text small text-muted">Hands-on networking labs following Cisco's CCNA curriculum.</p>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><i class="fas fa-server text-primary me-2"></i>Router & Switch Config</li>
+            <li class="mb-2"><i class="fas fa-project-diagram text-primary me-2"></i>DHCP, IPv6, VLANs</li>
+            <li class="mb-2"><i class="fas fa-random text-primary me-2"></i>HSRP, Routing Protocols</li>
+            <li><i class="fab fa-cisco text-primary me-2"></i>Cisco IOS, CCNA</li>
+          </ul>
         </div>
-        <div class="card-footer bg-white border-0 d-flex gap-2">
+        <div class="card-footer bg-transparent border-0">
+             <a href="https://safety.gt.tc/" target="_blank" class="btn btn-gradient w-100">
+            <i class="fas fa-external-link-alt me-1"></i>View Demo
+          </a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="container-fluid py-5 about-section">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <img src="./assets/images/hero-2.svg" alt="About Margaret" class="img-fluid rounded-3 shadow">
-      </div>
-      <div class="col-lg-6">
-                                  <h2 class="display-5 fw-bold mb-4" style="color: #8826BB;">About Me</h2>
-         <p class="lead mb-4">I am a passionate IT graduate with a strong foundation in software engineering and web development. My academic journey and hands-on projects including the Internet Safety Tips System and SolaSmart reflect my ability to design and implement innovative, user-centered solutions. I enjoy turning ideas into functional systems that not only solve problems but also create meaningful impact.</p>
-        
-        <div class="row mb-4">
-                     <div class="col-md-6 mb-3">
-             <div class="d-flex align-items-center">
-               <i class="fas fa-laptop-code text-primary me-3" style="font-size: 1.5rem; color: #8826BB;"></i>
-               <div>
-                 <h5 class="mb-1">Software Engineering</h5>
-                 <p class="text-muted mb-0">Robust & scalable solutions</p>
-               </div>
-             </div>
-           </div>
-          <div class="col-md-6 mb-3">
-            <div class="d-flex align-items-center">
-              <i class="fas fa-tablet-alt text-primary me-3" style="font-size: 1.5rem; color: #8826BB;"></i>
-              <div>
-                <h5 class="mb-1">Responsive Web Design</h5>
-                <p class="text-muted mb-0">Mobile-first approach</p>
-               </div>
-             </div>
-           </div>
-          <div class="col-md-6 mb-3">
-            <div class="d-flex align-items-center">
-              <i class="fas fa-tachometer-alt text-primary me-3" style="font-size: 1.5rem; color: #8826BB;"></i>
-              <div>
-                <h5 class="mb-1">Performance Optimization</h5>
-                <p class="text-muted mb-0">Fast & efficient solutions</p>
-               </div>
-             </div>
-           </div>
-          <div class="col-md-6 mb-3">
-            <div class="d-flex align-items-center">
-              <i class="fas fa-user-check text-primary me-3" style="font-size: 1.5rem; color: #8826BB;"></i>
-              <div>
-                <h5 class="mb-1">User Experience Design</h5>
-                <p class="text-muted mb-0">Intuitive & impactful interfaces</p>
-               </div>
-             </div>
-           </div>
-        </div>
+<style>
+/* Minimal gradient button */
+.btn-gradient {
+  background: linear-gradient(90deg, rgba(94,58,238,1) 0%, rgba(197,107,240,1) 100%);
+  color: #fff;
+  border-radius: 50px;
+  border: none;
+}
+.btn-gradient:hover {
+  opacity: 0.9;
+}
+</style>
 
-        <div class="mb-4">
-          <h5 class="mb-3">Additional Skills & Expertise:</h5>
-          <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-primary px-3 py-2">Networking (CCNA)</span>
-            <span class="badge bg-primary px-3 py-2">Java OOP</span>
-            <span class="badge bg-primary px-3 py-2">PHP & MySQL</span>
-            <span class="badge bg-primary px-3 py-2">IT Support</span>
-            <span class="badge bg-primary px-3 py-2">System Design</span>
-          </div>
-        </div>
 
-        <div class="mb-4">
-          <p class="text-muted">I am currently completing my Diploma in Information Technology, where I have gained extensive experience in both programming and networking. What drives me most in tech is the opportunity to build systems that improve people's digital experiences whether by enhancing online safety, supporting sustainability, or streamlining everyday processes. My goal is to continue learning, building, and contributing to impactful projects.</p>
-        </div>
 
-        <a href="#projects" class="btn btn-lg px-4 fw-bold" style="background-color: #8826BB; color: white; text-decoration: none;">
-          <i class="fas fa-eye me-2"></i>View My Work
-        </a>
-      </div>
+<!-- footer -->
+<footer class="bg-dark text-center text-white py-4">
+    <div class="container">
+        <p class="mb-2">© 2024 Nyakio Margaret. All rights reserved.</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-github fa-lg"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-discord fa-lg"></i></a>
+        </div>
     </div>
-  </div>
-</section>
+</footer>
+
+<style>
+    .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+</style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=+254769743789&text=Hello%20Nyakio%20Margaret%20I%20would%20like%20to%20know%20more%20about%20your%20services." class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
